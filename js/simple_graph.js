@@ -66,7 +66,7 @@ Graph.prototype = {
     var groups = network['groups'];
 
     for (n in nodes) {
-      this.addNode(n);
+      this.addNode(nodes[n]);
     }
 
     var directed = true;
