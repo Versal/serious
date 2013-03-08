@@ -41,3 +41,5 @@ var network =
 g.addNetwork(network);
 
 var r = Algs.simple_betweenness_centrality(g);
+
+console.log(r)

@@ -111,7 +111,7 @@ Graph.prototype = {
 /*
  * Edge
  */
-Graph.Edge = function SeriousEdge(opts) {
+Graph.Edge = function (opts) {
   this.source = opts.source;
   this.target = opts.target;
   this.weight = opts.weight;
@@ -125,7 +125,7 @@ Graph.Edge.prototype = {
 /*
  * Node
  */
-Graph.Node = function SeriousNode(id, node) {
+Graph.Node = function (id, node) {
   node = node || {};
   node.id = id;
   node.edges = [];
