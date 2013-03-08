@@ -1,4 +1,8 @@
 serious
 =======
 
-Serious JavaScript
+Serious JavaScript.  
+
+* Algorithms
+* Datastructures
+
