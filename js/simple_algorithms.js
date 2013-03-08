@@ -629,7 +629,32 @@
     return tail;
   }
 
+
+  function simple_betweenness_centrality(g) {
+    var fw = floyd_warshall(g); // cache it in g as g.apsp()
+    var m = fw.road;
+    var c = {};
+    for (n in m) { 
+      for (k in m[n]) { 
+        for (l in m[n][k]) { 
+          var i = m[n][k][l];
+          c[i] = (c[i] || 0) + 1;
+        } 
+      } 
+    }
+    sum = 0;
+    for (i in c) {
+      sum = sum + c[i];
+    }
+    for (i in c) {
+      c[i] = c[i] / sum;
+    }
+    return c
+  }
+
+
   if (typeof(module) !== "undefined") {
+    module.exports.simple_betweenness_centrality = simple_betweenness_centrality;
     module.exports.floyd_warshall = floyd_warshall;
     module.exports.bellman_ford   = bellman_ford;
     module.exports.dijkstra       = dijkstra;

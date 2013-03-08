@@ -60,6 +60,32 @@ Graph.prototype = {
     if (!directed) directedEdge(this, t,s, weight);
   },
 
+  addNetwork: function(network) {
+    var nodes  = network['nodes'];
+    var edges  = network['links'];
+    var groups = network['groups'];
+
+    for (n in nodes) {
+      this.addNode(n);
+    }
+
+    var directed = true;
+    for (e in edges) {
+      var edge = edges[e];
+      this.addEdge(edge['source'], edge['target'], directed);
+    }
+
+    for (g in groups) {
+      group = groups[g];
+      var anon_id = 0;
+      for (i = 0; i < group.size; i++, anon_id++) {
+        node_id = group.name + anon_id;
+        this.addNode(node_id);
+        this.addEdge(node_id, group['target'])
+      }
+    }
+  },
+
   /* TODO to be implemented
    * Preserve a copy of the graph state (nodes, positions, ...)
    * @comment     a comment describing the state
@@ -126,30 +152,6 @@ Graph.Node.prototype = {
     ]
   }
 */
-
-Graph.Network = function SeriousNetwork(network) {
-  var nodes  = network['nodes'];
-  var edges  = network['links'];
-  var groups = network['groups'];
-
-  for (n in nodes) {
-    this.addNode(n);
-  }
-
-  const var directed = true;
-  for (e in edges) {
-    var edge = edges[edge];
-    this.addEdge(edge['source'], edge['target'], directed);
-  }
-
-  var anon_id = nodes.length;
-  for (group in groups) {
-    for (i = 0; i < group.size; i++, anon_id++) {
-      this.addNode(anon_id);
-      this.addEdge(anon_id, group['target'])
-    }
-  }
-}
 
 if(typeof(module) !== "undefined") {
   module.exports = Graph;
