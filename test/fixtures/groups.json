@@ -1,0 +1,19 @@
+{
+  "nodes": [
+    { "id": "Mary" },
+    { "id": "Suzy" },
+    { "id": "Pete" }
+  ],
+  "groups": [
+    { "name": "Harvard",     "group": 11, "size": 10  },
+    { "name": "Surfers",     "group": 12, "size": 15 },
+    { "name": "SchoolMates", "group": 13, "size": 20 }
+  ],
+  "links": [
+    { "source": "Pete", "target": "Mary" },
+    { "source": "Mary", "target": "Pete" },
+
+    { "source_group": "Harvard", "target": "Suzy", "outratio": 0.1 },
+    { "source_group": "Surfers", "target": "Suzy", "outratio": 0.2 }
+  ]
+}

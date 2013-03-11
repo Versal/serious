@@ -1,0 +1,19 @@
+{
+  "author": "Alexy Khrabrov",
+  "name": "serious",
+  "description": "A serious JavaScript Library with data structures and algorithms",
+  "version": "0.0.1",
+  "repository": {
+    "url": "http://github.com/Versal/serious"
+  },
+  "main": "./lib/main",
+  "bin": {
+    "example": "./bin/example"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}

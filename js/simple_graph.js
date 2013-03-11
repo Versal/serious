@@ -60,6 +60,29 @@ Graph.prototype = {
     if (!directed) directedEdge(this, t,s, weight);
   },
 
+  /*
+    "network": {
+        "nodes": [
+          { "id": "Mary", "color": "pink" },
+          { "id": "Pete", "color": "blue" }
+        ],
+
+        // group ids should not conflict with the individual node ids
+
+        "groups": [
+          { "id": "MaryFriends", "size": 3},
+          { "id": "SchoolOrchestra", "size": 10 }
+
+        "edges": [
+          // undirected link means we add two directed edges
+          { "source": "Mary", "target": "Pete", "directed" : false },
+          { "source": "MaryFriends", target: "Mary", "outratio": 0.6 },
+          { "source": "SchoolOrchestra", target: "Mary", "outratio": 0.2 },
+        ]
+      }
+    */
+
+
   addNetwork: function(network) {
     var nodes  = network['nodes'];
     var edges  = network['links'];
@@ -69,21 +92,12 @@ Graph.prototype = {
       this.addNode(nodes[n].id);
     }
 
-    var directed = true;
     for (e in edges) {
       var edge = edges[e];
-      this.addEdge(edge['source'], edge['target'], directed);
+      this.addEdge(edge.source, edge.target, edge.directed || true);
     }
 
-    for (g in groups) {
-      group = groups[g];
-      var anon_id = 0;
-      for (i = 0; i < group.size; i++, anon_id++) {
-        node_id = group.name + anon_id;
-        this.addNode(node_id);
-        this.addEdge(node_id, group['target'])
-      }
-    }
+    
   },
 
   /* TODO to be implemented
@@ -135,23 +149,6 @@ Graph.Node = function (id, node) {
 Graph.Node.prototype = {
 };
 
-/*
-"network": {
-    "nodes": [
-      { "id": "Mary", "color": "pink" },
-      { "id": "Pete", "color": "blue" }
-    ],
-
-    "links": [
-      { "source": "Mary", "target": "Pete" },
-      { "source": "Pete", "target": "Mary" }
-    ],
-
-    "groups": [
-      { "name": "MaryFriends", "group": 11, "size": 3, "target": "Mary"}
-    ]
-  }
-*/
 
 if(typeof(module) !== "undefined") {
   module.exports = Graph;

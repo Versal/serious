@@ -1,7 +1,7 @@
 
-var Graph = require('./js/simple_graph')
+var Graph = require('./lib/simple_graph')
 
-var Algs = require('./js/simple_algorithms')
+var Algs = require('./lib/simple_algorithms')
 
 var g = new Graph();
 
@@ -36,7 +36,7 @@ var network =
    [ { name: 'MaryFriends',
        group: 11,
        size: 3,
-       target: 'Mary' } ] };
+       targets: { 'Mary': 0.6, 'MrPhillips': 0.4 } ] };
 
 g.addNetwork(network);
 
